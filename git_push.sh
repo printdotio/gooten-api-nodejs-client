@@ -8,7 +8,7 @@ git_repo_id=$2
 release_note=$3
 
 if [ "$git_user_id" = "" ]; then
-    git_user_id="grievoushead"
+    git_user_id="jenkins"
     echo "[INFO] No command line input provided. Set \$git_user_id to $git_user_id"
 fi
 
@@ -18,7 +18,7 @@ if [ "$git_repo_id" = "" ]; then
 fi
 
 if [ "$release_note" = "" ]; then
-    release_note="updated client libs with gooten namespaces"
+    release_note="auto: api client lib updated"
     echo "[INFO] No command line input provided. Set \$release_note to $release_note"
 fi
 
