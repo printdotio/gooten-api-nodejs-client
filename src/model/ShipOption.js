@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([undefined, '../ApiClient', './ShipPrice'], factory);
+    define(['../ApiClient', './ShipPrice'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(undefined, require('../ApiClient'), require('./ShipPrice'));
+    module.exports = factory(require('../ApiClient'), require('./ShipPrice'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    factory(root.SwaggerJsClient, root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.ShipPrice);
+    root.GootenApiClient.ShipOption = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.ShipPrice);
   }
-}(this, function(module, ApiClient, ShipPrice) {
+}(this, function(ApiClient, ShipPrice) {
   'use strict';
   
   
@@ -93,6 +93,10 @@
     
     if (data['Price']) {
       _this['Price'] = ShipPrice.constructFromObject(data['Price']);
+    }
+    
+    if (data['PartnerPrice']) {
+      _this['PartnerPrice'] = ShipPrice.constructFromObject(data['PartnerPrice']);
     }
     
     if (data['EstBusinessDaysTilDelivery']) {
@@ -205,6 +209,20 @@
   }
   
   /**
+   * @return {ShipPrice}
+   **/
+  ShipOption.prototype.getPartnerPrice = function() {
+    return this['PartnerPrice'];
+  }
+
+  /**
+   * @param {ShipPrice} partnerPrice
+   **/
+  ShipOption.prototype.setPartnerPrice = function(partnerPrice) {
+    this['PartnerPrice'] = partnerPrice;
+  }
+  
+  /**
    * @return {Integer}
    **/
   ShipOption.prototype.getEstBusinessDaysTilDelivery = function() {
@@ -221,10 +239,6 @@
   
 
   
-
-  if (module) {
-    module.ShipOption = ShipOption;
-  }
 
   return ShipOption;
   

@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([undefined, '../ApiClient', './Country'], factory);
+    define(['../ApiClient', './Country'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(undefined, require('../ApiClient'), require('./Country'));
+    module.exports = factory(require('../ApiClient'), require('./Country'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    factory(root.SwaggerJsClient, root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.Country);
+    root.GootenApiClient.CountryList = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.Country);
   }
-}(this, function(module, ApiClient, Country) {
+}(this, function(ApiClient, Country) {
   'use strict';
   
   
@@ -57,10 +57,6 @@
   
 
   
-
-  if (module) {
-    module.CountryList = CountryList;
-  }
 
   return CountryList;
   

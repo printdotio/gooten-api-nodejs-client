@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([undefined, '../ApiClient', './OrderItem', './Payment', './ShipToAddress'], factory);
+    define(['../ApiClient', './OrderItem', './Payment', './ShipToAddress'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(undefined, require('../ApiClient'), require('./OrderItem'), require('./Payment'), require('./ShipToAddress'));
+    module.exports = factory(require('../ApiClient'), require('./OrderItem'), require('./Payment'), require('./ShipToAddress'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    factory(root.SwaggerJsClient, root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.OrderItem, root.SwaggerJsClient.Payment, root.SwaggerJsClient.ShipToAddress);
+    root.GootenApiClient.Order = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.OrderItem, root.GootenApiClient.Payment, root.GootenApiClient.ShipToAddress);
   }
-}(this, function(module, ApiClient, OrderItem, Payment, ShipToAddress) {
+}(this, function(ApiClient, OrderItem, Payment, ShipToAddress) {
   'use strict';
   
   
@@ -126,10 +126,6 @@
   
 
   
-
-  if (module) {
-    module.Order = Order;
-  }
 
   return Order;
   

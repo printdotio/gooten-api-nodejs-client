@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([undefined, '../ApiClient', './PreconfiguredProduct'], factory);
+    define(['../ApiClient', './PreconfiguredProduct'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(undefined, require('../ApiClient'), require('./PreconfiguredProduct'));
+    module.exports = factory(require('../ApiClient'), require('./PreconfiguredProduct'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    factory(root.SwaggerJsClient, root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.PreconfiguredProduct);
+    root.GootenApiClient.PreconfiguredProductsResponse = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.PreconfiguredProduct);
   }
-}(this, function(module, ApiClient, PreconfiguredProduct) {
+}(this, function(ApiClient, PreconfiguredProduct) {
   'use strict';
   
   
@@ -57,10 +57,6 @@
   
 
   
-
-  if (module) {
-    module.PreconfiguredProductsResponse = PreconfiguredProductsResponse;
-  }
 
   return PreconfiguredProductsResponse;
   

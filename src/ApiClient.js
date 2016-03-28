@@ -7,10 +7,10 @@
     module.exports = factory(require('superagent'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    root.SwaggerJsClient.ApiClient = factory(root.superagent);
+    root.GootenApiClient.ApiClient = factory(root.superagent);
   }
 }(this, function(superagent) {
   'use strict';
@@ -19,7 +19,7 @@
     /**
      * The base path to put in front of every API call's (relative) path.
      */
-    this.basePath = 'http://localhost/api'.replace(/\/+$/, '');
+    this.basePath = 'https://localhost/api'.replace(/\/+$/, '');
 
     this.authentications = {
     };

@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([undefined, '../ApiClient', './SearchSubmittedOrder'], factory);
+    define(['../ApiClient', './SearchSubmittedOrder'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(undefined, require('../ApiClient'), require('./SearchSubmittedOrder'));
+    module.exports = factory(require('../ApiClient'), require('./SearchSubmittedOrder'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    factory(root.SwaggerJsClient, root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.SearchSubmittedOrder);
+    root.GootenApiClient.SubmittedOrderList = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.SearchSubmittedOrder);
   }
-}(this, function(module, ApiClient, SearchSubmittedOrder) {
+}(this, function(ApiClient, SearchSubmittedOrder) {
   'use strict';
   
   
@@ -126,10 +126,6 @@
   
 
   
-
-  if (module) {
-    module.SubmittedOrderList = SubmittedOrderList;
-  }
 
   return SubmittedOrderList;
   

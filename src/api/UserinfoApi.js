@@ -7,10 +7,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/UserInfo'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    root.SwaggerJsClient.UserinfoApi = factory(root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.UserInfo);
+    root.GootenApiClient.UserinfoApi = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.UserInfo);
   }
 }(this, function(ApiClient, UserInfo) {
   'use strict';

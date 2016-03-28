@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([undefined, '../ApiClient', './Address'], factory);
+    define(['../ApiClient', './Address'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(undefined, require('../ApiClient'), require('./Address'));
+    module.exports = factory(require('../ApiClient'), require('./Address'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    factory(root.SwaggerJsClient, root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.Address);
+    root.GootenApiClient.Result = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.Address);
   }
-}(this, function(module, ApiClient, Address) {
+}(this, function(ApiClient, Address) {
   'use strict';
   
   
@@ -126,10 +126,6 @@
   
 
   
-
-  if (module) {
-    module.Result = Result;
-  }
 
   return Result;
   

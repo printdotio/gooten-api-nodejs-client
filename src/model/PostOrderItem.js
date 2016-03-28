@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([undefined, '../ApiClient', './Image', './Meta'], factory);
+    define(['../ApiClient', './Image', './Meta'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(undefined, require('../ApiClient'), require('./Image'), require('./Meta'));
+    module.exports = factory(require('../ApiClient'), require('./Image'), require('./Meta'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    factory(root.SwaggerJsClient, root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.Image, root.SwaggerJsClient.Meta);
+    root.GootenApiClient.PostOrderItem = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.Image, root.GootenApiClient.Meta);
   }
-}(this, function(module, ApiClient, Image, Meta) {
+}(this, function(ApiClient, Image, Meta) {
   'use strict';
   
   
@@ -204,10 +204,6 @@
   
 
   
-
-  if (module) {
-    module.PostOrderItem = PostOrderItem;
-  }
 
   return PostOrderItem;
   

@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([undefined, '../ApiClient', './Image'], factory);
+    define(['../ApiClient', './Image'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(undefined, require('../ApiClient'), require('./Image'));
+    module.exports = factory(require('../ApiClient'), require('./Image'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    factory(root.SwaggerJsClient, root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.Image);
+    root.GootenApiClient.FileResult = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.Image);
   }
-}(this, function(module, ApiClient, Image) {
+}(this, function(ApiClient, Image) {
   'use strict';
   
   
@@ -57,10 +57,6 @@
   
 
   
-
-  if (module) {
-    module.FileResult = FileResult;
-  }
 
   return FileResult;
   

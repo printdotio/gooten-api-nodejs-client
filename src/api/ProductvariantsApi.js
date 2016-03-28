@@ -7,10 +7,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/ProductVariantResponse'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    root.SwaggerJsClient.ProductvariantsApi = factory(root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.ProductVariantResponse);
+    root.GootenApiClient.ProductvariantsApi = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.ProductVariantResponse);
   }
 }(this, function(ApiClient, ProductVariantResponse) {
   'use strict';
@@ -28,6 +28,7 @@
      * @param {String} productId Recipe product ID, such as those returned from the /products service
      * @param {Integer} version Version of the api being used
      * @param {String} source Description of the source-- ios, android, api, widget
+     * @param {String} opts['partnerBillingKey'] Partner billing key
      * @param {String} opts['all'] Whether or not to return all available printio products, or just ones in your recipe. Pass &#39;true&#39; or &#39;false&#39;.
      * @param {String} opts['languageCode'] Two-character language code, defaults to \&quot;en\&quot; (english)
      * @param {String} opts['currencyCode'] Three character currency code, defaults to \&quot;USD\&quot; (united states dollar)
@@ -64,6 +65,7 @@
         'source': source
       };
       var queryParams = {
+        'partnerBillingKey': opts['partnerBillingKey'],
         'countryCode': countryCode,
         'productId': productId,
         'all': opts['all'],
@@ -81,7 +83,7 @@
       var returnType = ProductVariantResponse;
 
       return this.apiClient.callApi(
-        '/productvariants/v/{version}/source/{source}/', 'GET',
+        '/v/{version}/source/{source}/productvariants/', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

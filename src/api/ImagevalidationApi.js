@@ -7,10 +7,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/ImageValidatorResult'), require('../model/ImageValidationVm'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    root.SwaggerJsClient.ImagevalidationApi = factory(root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.ImageValidatorResult, root.SwaggerJsClient.ImageValidationVm);
+    root.GootenApiClient.ImagevalidationApi = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.ImageValidatorResult, root.GootenApiClient.ImageValidationVm);
   }
 }(this, function(ApiClient, ImageValidatorResult, ImageValidationVm) {
   'use strict';

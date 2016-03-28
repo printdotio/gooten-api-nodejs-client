@@ -7,10 +7,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/ShippingPricesRequest'), require('../model/ShippingPricesResult'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    root.SwaggerJsClient.ShippingpricesApi = factory(root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.ShippingPricesRequest, root.SwaggerJsClient.ShippingPricesResult);
+    root.GootenApiClient.ShippingpricesApi = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.ShippingPricesRequest, root.GootenApiClient.ShippingPricesResult);
   }
 }(this, function(ApiClient, ShippingPricesRequest, ShippingPricesResult) {
   'use strict';
@@ -25,10 +25,12 @@
      * Get a list of shipping options and prices for items
      * Get a list of shipping options and prices for items.
      * @param {ShippingPricesRequest} shippingPricesRequest DTO with required information
+     * @param {String} opts['partnerBillingKey'] Partner billing key
      * @param {function} callback the callback function, accepting three arguments: error, data, response
      *   data is of type: ShippingPricesResult
      */
-    self.pOSTShippingprices = function(shippingPricesRequest, callback) {
+    self.pOSTShippingprices = function(shippingPricesRequest, opts, callback) {
+      opts = opts || {};
       var postBody = shippingPricesRequest;
       
       // verify the required parameter 'shippingPricesRequest' is set
@@ -40,6 +42,7 @@
       var pathParams = {
       };
       var queryParams = {
+        'partnerBillingKey': opts['partnerBillingKey']
       };
       var headerParams = {
       };

@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([undefined, '../ApiClient', './OrderItemImage'], factory);
+    define(['../ApiClient', './OrderItemImage'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(undefined, require('../ApiClient'), require('./OrderItemImage'));
+    module.exports = factory(require('../ApiClient'), require('./OrderItemImage'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    factory(root.SwaggerJsClient, root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.OrderItemImage);
+    root.GootenApiClient.OrderItem = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.OrderItemImage);
   }
-}(this, function(module, ApiClient, OrderItemImage) {
+}(this, function(ApiClient, OrderItemImage) {
   'use strict';
   
   
@@ -126,10 +126,6 @@
   
 
   
-
-  if (module) {
-    module.OrderItem = OrderItem;
-  }
 
   return OrderItem;
   

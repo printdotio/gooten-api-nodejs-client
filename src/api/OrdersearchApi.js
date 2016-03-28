@@ -7,10 +7,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/SubmittedOrderList'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    root.SwaggerJsClient.OrdersearchApi = factory(root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.SubmittedOrderList);
+    root.GootenApiClient.OrdersearchApi = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.SubmittedOrderList);
   }
 }(this, function(ApiClient, SubmittedOrderList) {
   'use strict';
@@ -24,6 +24,7 @@
     /**
      * Search an orders
      * Search through the orders and return information about orders that match search criteria.
+     * @param {String} partnerBillingKey Partner billing key
      * @param {String} opts['genericValues'] Any value which is related to order (partner name, address, phone, couponCode, etc...)
      * @param {String} opts['lastName'] Partner last name
      * @param {String} opts['email'] Partner email
@@ -37,14 +38,20 @@
      * @param {function} callback the callback function, accepting three arguments: error, data, response
      *   data is of type: SubmittedOrderList
      */
-    self.gETOrdersearch = function(opts, callback) {
+    self.gETOrdersearch = function(partnerBillingKey, opts, callback) {
       opts = opts || {};
       var postBody = null;
+      
+      // verify the required parameter 'partnerBillingKey' is set
+      if (partnerBillingKey == null) {
+        throw "Missing the required parameter 'partnerBillingKey' when calling gETOrdersearch";
+      }
       
 
       var pathParams = {
       };
       var queryParams = {
+        'partnerBillingKey': partnerBillingKey,
         'genericValues': opts['genericValues'],
         'lastName': opts['lastName'],
         'email': opts['email'],

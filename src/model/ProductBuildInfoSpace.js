@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([undefined, '../ApiClient', './ProductBuildInfo'], factory);
+    define(['../ApiClient', './ProductBuildInfo'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(undefined, require('../ApiClient'), require('./ProductBuildInfo'));
+    module.exports = factory(require('../ApiClient'), require('./ProductBuildInfo'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    factory(root.SwaggerJsClient, root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.ProductBuildInfo);
+    root.GootenApiClient.ProductBuildInfoSpace = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.ProductBuildInfo);
   }
-}(this, function(module, ApiClient, ProductBuildInfo) {
+}(this, function(ApiClient, ProductBuildInfo) {
   'use strict';
   
   
@@ -149,10 +149,6 @@
   
 
   
-
-  if (module) {
-    module.ProductBuildInfoSpace = ProductBuildInfoSpace;
-  }
 
   return ProductBuildInfoSpace;
   

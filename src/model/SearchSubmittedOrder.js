@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([undefined, '../ApiClient', './Meta', './PostSubmittedItem', './ProductPriceInfo'], factory);
+    define(['../ApiClient', './Meta', './PostSubmittedItem', './ProductPriceInfo'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(undefined, require('../ApiClient'), require('./Meta'), require('./PostSubmittedItem'), require('./ProductPriceInfo'));
+    module.exports = factory(require('../ApiClient'), require('./Meta'), require('./PostSubmittedItem'), require('./ProductPriceInfo'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    factory(root.SwaggerJsClient, root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.Meta, root.SwaggerJsClient.PostSubmittedItem, root.SwaggerJsClient.ProductPriceInfo);
+    root.GootenApiClient.SearchSubmittedOrder = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.Meta, root.GootenApiClient.PostSubmittedItem, root.GootenApiClient.ProductPriceInfo);
   }
-}(this, function(module, ApiClient, Meta, PostSubmittedItem, ProductPriceInfo) {
+}(this, function(ApiClient, Meta, PostSubmittedItem, ProductPriceInfo) {
   'use strict';
   
   
@@ -247,10 +247,6 @@
   
 
   
-
-  if (module) {
-    module.SearchSubmittedOrder = SearchSubmittedOrder;
-  }
 
   return SearchSubmittedOrder;
   

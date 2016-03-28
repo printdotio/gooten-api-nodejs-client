@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([undefined, '../ApiClient', './ShipItem'], factory);
+    define(['../ApiClient', './ShipItem'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(undefined, require('../ApiClient'), require('./ShipItem'));
+    module.exports = factory(require('../ApiClient'), require('./ShipItem'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    factory(root.SwaggerJsClient, root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.ShipItem);
+    root.GootenApiClient.ShippingPricesResult = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.ShipItem);
   }
-}(this, function(module, ApiClient, ShipItem) {
+}(this, function(ApiClient, ShipItem) {
   'use strict';
   
   
@@ -57,10 +57,6 @@
   
 
   
-
-  if (module) {
-    module.ShippingPricesResult = ShippingPricesResult;
-  }
 
   return ShippingPricesResult;
   

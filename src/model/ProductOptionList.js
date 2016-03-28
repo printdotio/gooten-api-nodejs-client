@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([undefined, '../ApiClient', './ProductOption'], factory);
+    define(['../ApiClient', './ProductOption'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(undefined, require('../ApiClient'), require('./ProductOption'));
+    module.exports = factory(require('../ApiClient'), require('./ProductOption'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    factory(root.SwaggerJsClient, root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.ProductOption);
+    root.GootenApiClient.ProductOptionList = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.ProductOption);
   }
-}(this, function(module, ApiClient, ProductOption) {
+}(this, function(ApiClient, ProductOption) {
   'use strict';
   
   
@@ -80,10 +80,6 @@
   
 
   
-
-  if (module) {
-    module.ProductOptionList = ProductOptionList;
-  }
 
   return ProductOptionList;
   

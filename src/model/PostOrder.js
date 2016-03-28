@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([undefined, '../ApiClient', './Meta', './OrderPayment', './PostOrderItem', './ShipToAddress'], factory);
+    define(['../ApiClient', './Meta', './OrderPayment', './PostOrderItem', './ShipToAddress'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(undefined, require('../ApiClient'), require('./Meta'), require('./OrderPayment'), require('./PostOrderItem'), require('./ShipToAddress'));
+    module.exports = factory(require('../ApiClient'), require('./Meta'), require('./OrderPayment'), require('./PostOrderItem'), require('./ShipToAddress'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    factory(root.SwaggerJsClient, root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.Meta, root.SwaggerJsClient.OrderPayment, root.SwaggerJsClient.PostOrderItem, root.SwaggerJsClient.ShipToAddress);
+    root.GootenApiClient.PostOrder = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.Meta, root.GootenApiClient.OrderPayment, root.GootenApiClient.PostOrderItem, root.GootenApiClient.ShipToAddress);
   }
-}(this, function(module, ApiClient, Meta, OrderPayment, PostOrderItem, ShipToAddress) {
+}(this, function(ApiClient, Meta, OrderPayment, PostOrderItem, ShipToAddress) {
   'use strict';
   
   
@@ -227,10 +227,6 @@
   
 
   
-
-  if (module) {
-    module.PostOrder = PostOrder;
-  }
 
   return PostOrder;
   

@@ -7,10 +7,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/PostSubmittedOrder'), require('../model/OrderResult'), require('../model/PostOrder'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    root.SwaggerJsClient.OrdersApi = factory(root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.PostSubmittedOrder, root.SwaggerJsClient.OrderResult, root.SwaggerJsClient.PostOrder);
+    root.GootenApiClient.OrdersApi = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.PostSubmittedOrder, root.GootenApiClient.OrderResult, root.GootenApiClient.PostOrder);
   }
 }(this, function(ApiClient, PostSubmittedOrder, OrderResult, PostOrder) {
   'use strict';
@@ -70,7 +70,7 @@
       var returnType = PostSubmittedOrder;
 
       return this.apiClient.callApi(
-        '/orders/v/{version}/source/{source}/', 'GET',
+        '/v/{version}/source/{source}/orders/', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -122,7 +122,7 @@
       var returnType = OrderResult;
 
       return this.apiClient.callApi(
-        '/orders/v/{version}/source/{source}/', 'POST',
+        '/v/{version}/source/{source}/orders/', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([undefined, '../ApiClient', './ProductPreviewImage'], factory);
+    define(['../ApiClient', './ProductPreviewImage'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(undefined, require('../ApiClient'), require('./ProductPreviewImage'));
+    module.exports = factory(require('../ApiClient'), require('./ProductPreviewImage'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    factory(root.SwaggerJsClient, root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.ProductPreviewImage);
+    root.GootenApiClient.ProductPreviewRequest = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.ProductPreviewImage);
   }
-}(this, function(module, ApiClient, ProductPreviewImage) {
+}(this, function(ApiClient, ProductPreviewImage) {
   'use strict';
   
   
@@ -155,10 +155,6 @@
   
 
   
-
-  if (module) {
-    module.ProductPreviewRequest = ProductPreviewRequest;
-  }
 
   return ProductPreviewRequest;
   

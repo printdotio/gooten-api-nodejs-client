@@ -1,7 +1,7 @@
 {
-  "name": "swagger-js-client",
-  "version": "1",
-  "description": "Client library of swagger-js-client",
+  "name": "gooten-api-client",
+  "version": "1.0.0",
+  "description": "Gooten API Client Library",
   "main": "src/index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --recursive"

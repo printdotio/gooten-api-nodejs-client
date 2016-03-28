@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([undefined, '../ApiClient', './KeyValuePair'], factory);
+    define(['../ApiClient', './KeyValuePair'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(undefined, require('../ApiClient'), require('./KeyValuePair'));
+    module.exports = factory(require('../ApiClient'), require('./KeyValuePair'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    factory(root.SwaggerJsClient, root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.KeyValuePair);
+    root.GootenApiClient.LanguageDictionary = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.KeyValuePair);
   }
-}(this, function(module, ApiClient, KeyValuePair) {
+}(this, function(ApiClient, KeyValuePair) {
   'use strict';
   
   
@@ -80,10 +80,6 @@
   
 
   
-
-  if (module) {
-    module.LanguageDictionary = LanguageDictionary;
-  }
 
   return LanguageDictionary;
   

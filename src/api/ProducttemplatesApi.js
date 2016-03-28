@@ -7,10 +7,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/ProductBuildInfoResponse'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    root.SwaggerJsClient.ProducttemplatesApi = factory(root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.ProductBuildInfoResponse);
+    root.GootenApiClient.ProducttemplatesApi = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.ProductBuildInfoResponse);
   }
 }(this, function(ApiClient, ProductBuildInfoResponse) {
   'use strict';

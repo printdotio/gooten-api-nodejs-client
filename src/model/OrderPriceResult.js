@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([undefined, '../ApiClient', './PriceInfo'], factory);
+    define(['../ApiClient', './PriceInfo'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(undefined, require('../ApiClient'), require('./PriceInfo'));
+    module.exports = factory(require('../ApiClient'), require('./PriceInfo'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    factory(root.SwaggerJsClient, root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.PriceInfo);
+    root.GootenApiClient.OrderPriceResult = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.PriceInfo);
   }
-}(this, function(module, ApiClient, PriceInfo) {
+}(this, function(ApiClient, PriceInfo) {
   'use strict';
   
   
@@ -264,10 +264,6 @@
   
 
   
-
-  if (module) {
-    module.OrderPriceResult = OrderPriceResult;
-  }
 
   return OrderPriceResult;
   

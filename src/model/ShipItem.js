@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([undefined, '../ApiClient', './ShipOption'], factory);
+    define(['../ApiClient', './ShipOption'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(undefined, require('../ApiClient'), require('./ShipOption'));
+    module.exports = factory(require('../ApiClient'), require('./ShipOption'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    factory(root.SwaggerJsClient, root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.ShipOption);
+    root.GootenApiClient.ShipItem = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.ShipOption);
   }
-}(this, function(module, ApiClient, ShipOption) {
+}(this, function(ApiClient, ShipOption) {
   'use strict';
   
   
@@ -80,10 +80,6 @@
   
 
   
-
-  if (module) {
-    module.ShipItem = ShipItem;
-  }
 
   return ShipItem;
   

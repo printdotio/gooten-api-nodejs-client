@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([undefined, '../ApiClient', './Category', './ProductImage', './ProductInfo', './ProductPriceInfo'], factory);
+    define(['../ApiClient', './Category', './ProductImage', './ProductInfo', './ProductPriceInfo'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(undefined, require('../ApiClient'), require('./Category'), require('./ProductImage'), require('./ProductInfo'), require('./ProductPriceInfo'));
+    module.exports = factory(require('../ApiClient'), require('./Category'), require('./ProductImage'), require('./ProductInfo'), require('./ProductPriceInfo'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    factory(root.SwaggerJsClient, root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.Category, root.SwaggerJsClient.ProductImage, root.SwaggerJsClient.ProductInfo, root.SwaggerJsClient.ProductPriceInfo);
+    root.GootenApiClient.Product = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.Category, root.GootenApiClient.ProductImage, root.GootenApiClient.ProductInfo, root.GootenApiClient.ProductPriceInfo);
   }
-}(this, function(module, ApiClient, Category, ProductImage, ProductInfo, ProductPriceInfo) {
+}(this, function(ApiClient, Category, ProductImage, ProductInfo, ProductPriceInfo) {
   'use strict';
   
   
@@ -144,6 +144,10 @@
     
     if (data['PriceInfo']) {
       _this['PriceInfo'] = ProductPriceInfo.constructFromObject(data['PriceInfo']);
+    }
+    
+    if (data['PartnerPriceInfo']) {
+      _this['PartnerPriceInfo'] = ProductPriceInfo.constructFromObject(data['PartnerPriceInfo']);
     }
     
     if (data['Categories']) {
@@ -338,6 +342,20 @@
   }
   
   /**
+   * @return {ProductPriceInfo}
+   **/
+  Product.prototype.getPartnerPriceInfo = function() {
+    return this['PartnerPriceInfo'];
+  }
+
+  /**
+   * @param {ProductPriceInfo} partnerPriceInfo
+   **/
+  Product.prototype.setPartnerPriceInfo = function(partnerPriceInfo) {
+    this['PartnerPriceInfo'] = partnerPriceInfo;
+  }
+  
+  /**
    * @return {[Category]}
    **/
   Product.prototype.getCategories = function() {
@@ -354,10 +372,6 @@
   
 
   
-
-  if (module) {
-    module.Product = Product;
-  }
 
   return Product;
   

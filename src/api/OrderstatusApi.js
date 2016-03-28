@@ -7,10 +7,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/OrderStatusUpdateResult'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    root.SwaggerJsClient.OrderstatusApi = factory(root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.OrderStatusUpdateResult);
+    root.GootenApiClient.OrderstatusApi = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.OrderStatusUpdateResult);
   }
 }(this, function(ApiClient, OrderStatusUpdateResult) {
   'use strict';
@@ -24,13 +24,19 @@
     /**
      * Update an order status
      * Update status of each order item.
+     * @param {String} partnerBillingKey Partner billing key
      * @param {String} id Order Id
      * @param {String} orderStatusName Order status name for update
      * @param {function} callback the callback function, accepting three arguments: error, data, response
      *   data is of type: OrderStatusUpdateResult
      */
-    self.pOSTOrderstatus = function(id, orderStatusName, callback) {
+    self.pOSTOrderstatus = function(partnerBillingKey, id, orderStatusName, callback) {
       var postBody = null;
+      
+      // verify the required parameter 'partnerBillingKey' is set
+      if (partnerBillingKey == null) {
+        throw "Missing the required parameter 'partnerBillingKey' when calling pOSTOrderstatus";
+      }
       
       // verify the required parameter 'id' is set
       if (id == null) {
@@ -46,6 +52,7 @@
       var pathParams = {
       };
       var queryParams = {
+        'partnerBillingKey': partnerBillingKey,
         'id': id,
         'orderStatusName': orderStatusName
       };

@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([undefined, '../ApiClient', './ValidationFailure'], factory);
+    define(['../ApiClient', './ValidationFailure'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(undefined, require('../ApiClient'), require('./ValidationFailure'));
+    module.exports = factory(require('../ApiClient'), require('./ValidationFailure'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    factory(root.SwaggerJsClient, root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.ValidationFailure);
+    root.GootenApiClient.ImageValidatorResult = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.ValidationFailure);
   }
-}(this, function(module, ApiClient, ValidationFailure) {
+}(this, function(ApiClient, ValidationFailure) {
   'use strict';
   
   
@@ -80,10 +80,6 @@
   
 
   
-
-  if (module) {
-    module.ImageValidatorResult = ImageValidatorResult;
-  }
 
   return ImageValidatorResult;
   

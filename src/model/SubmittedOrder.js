@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([undefined, '../ApiClient', './Item'], factory);
+    define(['../ApiClient', './Item'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(undefined, require('../ApiClient'), require('./Item'));
+    module.exports = factory(require('../ApiClient'), require('./Item'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    factory(root.SwaggerJsClient, root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.Item);
+    root.GootenApiClient.SubmittedOrder = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.Item);
   }
-}(this, function(module, ApiClient, Item) {
+}(this, function(ApiClient, Item) {
   'use strict';
   
   
@@ -80,10 +80,6 @@
   
 
   
-
-  if (module) {
-    module.SubmittedOrder = SubmittedOrder;
-  }
 
   return SubmittedOrder;
   

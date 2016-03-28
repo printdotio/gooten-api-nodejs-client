@@ -7,10 +7,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/PreconfiguredProductsInsertResponse'), require('../model/PreconfiguredProductInsert'), require('../model/PreconfiguredProductsResponse'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    root.SwaggerJsClient.PreconfiguredproductsApi = factory(root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.PreconfiguredProductsInsertResponse, root.SwaggerJsClient.PreconfiguredProductInsert, root.SwaggerJsClient.PreconfiguredProductsResponse);
+    root.GootenApiClient.PreconfiguredproductsApi = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.PreconfiguredProductsInsertResponse, root.GootenApiClient.PreconfiguredProductInsert, root.GootenApiClient.PreconfiguredProductsResponse);
   }
 }(this, function(ApiClient, PreconfiguredProductsInsertResponse, PreconfiguredProductInsert, PreconfiguredProductsResponse) {
   'use strict';
@@ -66,7 +66,7 @@
       var returnType = PreconfiguredProductsInsertResponse;
 
       return this.apiClient.callApi(
-        '/preconfiguredproducts/v/{version}/source/{source}/', 'POST',
+        '/v/{version}/source/{source}/preconfiguredproducts/', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -115,7 +115,7 @@
       var returnType = PreconfiguredProductsInsertResponse;
 
       return this.apiClient.callApi(
-        '/preconfiguredproducts/v/{version}/source/{source}/', 'DELETE',
+        '/v/{version}/source/{source}/preconfiguredproducts/', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -173,7 +173,7 @@
       var returnType = PreconfiguredProductsResponse;
 
       return this.apiClient.callApi(
-        '/preconfiguredproducts/v/{version}/source/{source}/', 'GET',
+        '/v/{version}/source/{source}/preconfiguredproducts/', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -225,7 +225,7 @@
       var returnType = PreconfiguredProductsInsertResponse;
 
       return this.apiClient.callApi(
-        '/preconfiguredproducts/v/{version}/source/{source}/', 'PUT',
+        '/v/{version}/source/{source}/preconfiguredproducts/', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

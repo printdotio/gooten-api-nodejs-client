@@ -7,10 +7,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/CountryList'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    root.SwaggerJsClient.CountriesApi = factory(root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.CountryList);
+    root.GootenApiClient.CountriesApi = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.CountryList);
   }
 }(this, function(ApiClient, CountryList) {
   'use strict';

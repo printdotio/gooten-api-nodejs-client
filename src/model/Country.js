@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([undefined, '../ApiClient', './Currency'], factory);
+    define(['../ApiClient', './Currency'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(undefined, require('../ApiClient'), require('./Currency'));
+    module.exports = factory(require('../ApiClient'), require('./Currency'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    factory(root.SwaggerJsClient, root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.Currency);
+    root.GootenApiClient.Country = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.Currency);
   }
-}(this, function(module, ApiClient, Currency) {
+}(this, function(ApiClient, Currency) {
   'use strict';
   
   
@@ -172,10 +172,6 @@
   
 
   
-
-  if (module) {
-    module.Country = Country;
-  }
 
   return Country;
   

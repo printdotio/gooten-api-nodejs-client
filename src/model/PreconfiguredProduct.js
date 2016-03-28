@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([undefined, '../ApiClient', './PreconfiguredItem', './PreconfiguredProductImage', './ProductPriceInfo'], factory);
+    define(['../ApiClient', './PreconfiguredItem', './PreconfiguredProductImage', './ProductPriceInfo'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(undefined, require('../ApiClient'), require('./PreconfiguredItem'), require('./PreconfiguredProductImage'), require('./ProductPriceInfo'));
+    module.exports = factory(require('../ApiClient'), require('./PreconfiguredItem'), require('./PreconfiguredProductImage'), require('./ProductPriceInfo'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    factory(root.SwaggerJsClient, root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.PreconfiguredItem, root.SwaggerJsClient.PreconfiguredProductImage, root.SwaggerJsClient.ProductPriceInfo);
+    root.GootenApiClient.PreconfiguredProduct = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.PreconfiguredItem, root.GootenApiClient.PreconfiguredProductImage, root.GootenApiClient.ProductPriceInfo);
   }
-}(this, function(module, ApiClient, PreconfiguredItem, PreconfiguredProductImage, ProductPriceInfo) {
+}(this, function(ApiClient, PreconfiguredItem, PreconfiguredProductImage, ProductPriceInfo) {
   'use strict';
   
   
@@ -181,10 +181,6 @@
   
 
   
-
-  if (module) {
-    module.PreconfiguredProduct = PreconfiguredProduct;
-  }
 
   return PreconfiguredProduct;
   

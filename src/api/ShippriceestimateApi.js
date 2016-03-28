@@ -7,10 +7,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/ShipEstimate'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    root.SwaggerJsClient.ShippriceestimateApi = factory(root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.ShipEstimate);
+    root.GootenApiClient.ShippriceestimateApi = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.ShipEstimate);
   }
 }(this, function(ApiClient, ShipEstimate) {
   'use strict';

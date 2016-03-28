@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([undefined, '../ApiClient', './Preconfiguration'], factory);
+    define(['../ApiClient', './Preconfiguration'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(undefined, require('../ApiClient'), require('./Preconfiguration'));
+    module.exports = factory(require('../ApiClient'), require('./Preconfiguration'));
   } else {
     // Browser globals (root is window)
-    if (!root.SwaggerJsClient) {
-      root.SwaggerJsClient = {};
+    if (!root.GootenApiClient) {
+      root.GootenApiClient = {};
     }
-    factory(root.SwaggerJsClient, root.SwaggerJsClient.ApiClient, root.SwaggerJsClient.Preconfiguration);
+    root.GootenApiClient.PreconfiguredItem = factory(root.GootenApiClient.ApiClient, root.GootenApiClient.Preconfiguration);
   }
-}(this, function(module, ApiClient, Preconfiguration) {
+}(this, function(ApiClient, Preconfiguration) {
   'use strict';
   
   
@@ -109,10 +109,6 @@
   
 
   
-
-  if (module) {
-    module.PreconfiguredItem = PreconfiguredItem;
-  }
 
   return PreconfiguredItem;
   
