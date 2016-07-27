@@ -19,7 +19,7 @@
     /**
      * The base path to put in front of every API call's (relative) path.
      */
-    this.basePath = 'https://localhost/api'.replace(/\/+$/, '');
+    this.basePath = 'https://api.print.io/api'.replace(/\/+$/, '');
 
     this.authentications = {
     };
